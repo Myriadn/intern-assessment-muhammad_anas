@@ -63,7 +63,7 @@ To evaluate your practical Git workflow and version control habits, you are requ
 ### Section 2: Multiple Select / Checkbox (Write all correct letters, e.g., "A, B, D")
 | Q16 | Q17 | Q18 | Q19 | Q20 |
 |:---:|:---:|:---:|:---:|:---:|
-| [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] | [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] | [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] | [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] | [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] |
+| [ A, B, D, E ] | [ A, B, C, E ] | [ A, B, C, E ] | [ A, C, D, E ] | [ A, B, C, E ] |
 
 ---
 
@@ -208,39 +208,39 @@ func main() {
 *👉 Commit & push after completing this section.*
 
 **16. Which of the following statements about Git commands and everyday workflows are TRUE? (Select ALL that apply)**
-- [ ] A) `git branch -d feature-branch` deletes a local branch.
-- [ ] B) `git stash` temporarily shelves uncommitted local changes so you can work on a clean directory.
+- [X] A) `git branch -d feature-branch` deletes a local branch.
+- [X] B) `git stash` temporarily shelves uncommitted local changes so you can work on a clean directory.
 - [ ] C) `git push origin main` automatically deletes all remote branches that were merged locally.
-- [ ] D) `git status` displays the state of the working directory and the staging area.
-- [ ] E) `git init` converts an existing directory into a new Git repository.
+- [X] D) `git status` displays the state of the working directory and the staging area.
+- [X] E) `git init` converts an existing directory into a new Git repository.
 
 **17. Which of the following types in Go have `nil` as their default zero value? (Select ALL that apply)**
-- [ ] A) Slices (`[]int`)
-- [ ] B) Maps (`map[string]string`)
-- [ ] C) Pointers (`*User`)
+- [X] A) Slices (`[]int`)
+- [X] B) Maps (`map[string]string`)
+- [X] C) Pointers (`*User`)
 - [ ] D) Integers (`int`)
-- [ ] E) Interfaces (`error` or `any`)
+- [X] E) Interfaces (`error` or `any`)
 
 **18. Which of the following statements about Go data structures, memory, and syntax are CORRECT? (Select ALL that apply)**
-- [ ] A) Attempting to write into an uninitialized `nil` map (`var m map[string]int; m["key"] = 1`) triggers a fatal runtime panic.
-- [ ] B) A Go slice header contains three fields: a pointer to the underlying array, length (`len`), and capacity (`cap`).
-- [ ] C) Struct tags such as `` `json:"user_id,omitempty"` `` allow customizing JSON field names and omitting empty fields during serialization.
+- [X] A) Attempting to write into an uninitialized `nil` map (`var m map[string]int; m["key"] = 1`) triggers a fatal runtime panic.
+- [X] B) A Go slice header contains three fields: a pointer to the underlying array, length (`len`), and capacity (`cap`).
+- [X] C) Struct tags such as `` `json:"user_id,omitempty"` `` allow customizing JSON field names and omitting empty fields during serialization.
 - [ ] D) In Go, a struct must explicitly declare an `implements` keyword to satisfy an interface.
-- [ ] E) The `make()` built-in function is used to initialize slices, maps, and channels with allocated memory.
+- [X] E) The `make()` built-in function is used to initialize slices, maps, and channels with allocated memory.
 
 **19. Which of the following practices are recommended for building secure, reliable, and performant database applications? (Select ALL that apply)**
-- [ ] A) Use parameterized SQL queries (e.g., `db.Query("SELECT ... WHERE email = ?", email)`) to prevent SQL Injection attacks.
-- [ ] B) Embed raw user input strings directly into SQL queries using `fmt.Sprintf` to maximize query execution speed.
-- [ ] C) Add indexes to columns that are frequently used in `WHERE` filters, `JOIN` conditions, and `ORDER BY` clauses.
+- [X] A) Use parameterized SQL queries (e.g., `db.Query("SELECT ... WHERE email = ?", email)`) to prevent SQL Injection attacks.
+- [X] B) Embed raw user input strings directly into SQL queries using `fmt.Sprintf` to maximize query execution speed.
+- [X] C) Add indexes to columns that are frequently used in `WHERE` filters, `JOIN` conditions, and `ORDER BY` clauses.
 - [ ] D) Always close SQL query result sets (`rows.Close()`) to release database connections back to the connection pool.
-- [ ] E) Use database transactions (`BEGIN`, `COMMIT`, `ROLLBACK`) when executing multi-step financial balance transfers.
+- [X] E) Use database transactions (`BEGIN`, `COMMIT`, `ROLLBACK`) when executing multi-step financial balance transfers.
 
 **20. Which of the following statements regarding MongoDB (NoSQL) are TRUE? (Select ALL that apply)**
-- [ ] A) MongoDB stores records as flexible, semi-structured BSON (Binary JSON) documents.
-- [ ] B) Different documents within the same MongoDB collection can contain completely different fields and data structures.
-- [ ] C) The `$lookup` aggregation stage allows joining data from another collection (similar to a SQL LEFT OUTER JOIN).
+- [X] A) MongoDB stores records as flexible, semi-structured BSON (Binary JSON) documents.
+- [X] B) Different documents within the same MongoDB collection can contain completely different fields and data structures.
+- [X] C) The `$lookup` aggregation stage allows joining data from another collection (similar to a SQL LEFT OUTER JOIN).
 - [ ] D) MongoDB does not support creating indexes on document fields.
-- [ ] E) MongoDB natively supports nested sub-documents and arrays within a single document.
+- [X] E) MongoDB natively supports nested sub-documents and arrays within a single document.
 
 ---
 
