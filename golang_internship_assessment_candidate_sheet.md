@@ -268,7 +268,14 @@ However, two requirements must be fulfilled:
 
 *Write your answer here:*
 ```text
+type User struct {
+    ID           int    `json:"id"`
+    FullName     string `json:"full_name"`
+    Email        string `json:"email"`
+    PasswordHash string `json:"-"`
+}
 
+`json:"-"` struct tag instruct the Go JSON package during json serialization to skip the field from the output. this is useful for sensitive security data from being exposed.
 
 ```
 
@@ -286,8 +293,9 @@ Your team is building an **E-Commerce Platform**. You need to store two main mod
 
 *Write your answer here:*
 ```text
+User Wallets & Financial Balances will be chosen for MySQL, because it's required for ACID transaction guarantees.
 
-
+and, Product Catalog & Dynamic Specifications will be chosen for MongoDB, because it's schema-flexible and supports dynamic attribute storage.
 ```
 
 ---
