@@ -230,9 +230,9 @@ func main() {
 
 **19. Which of the following practices are recommended for building secure, reliable, and performant database applications? (Select ALL that apply)**
 - [X] A) Use parameterized SQL queries (e.g., `db.Query("SELECT ... WHERE email = ?", email)`) to prevent SQL Injection attacks.
-- [X] B) Embed raw user input strings directly into SQL queries using `fmt.Sprintf` to maximize query execution speed.
+- [ ] B) Embed raw user input strings directly into SQL queries using `fmt.Sprintf` to maximize query execution speed.
 - [X] C) Add indexes to columns that are frequently used in `WHERE` filters, `JOIN` conditions, and `ORDER BY` clauses.
-- [ ] D) Always close SQL query result sets (`rows.Close()`) to release database connections back to the connection pool.
+- [X] D) Always close SQL query result sets (`rows.Close()`) to release database connections back to the connection pool.
 - [X] E) Use database transactions (`BEGIN`, `COMMIT`, `ROLLBACK`) when executing multi-step financial balance transfers.
 
 **20. Which of the following statements regarding MongoDB (NoSQL) are TRUE? (Select ALL that apply)**
@@ -339,5 +339,90 @@ You are tasked with building a core discount calculation component for an Indone
 ```go
 package main
 
-// TODO: Write your code here
+import (
+	"errors"
+	"fmt"
+)
+
+// cart struct
+type CartItem struct {
+	ProductID string
+	Name      string
+	Price     float64
+	Quantity  int
+}
+
+// voucher struct
+type Voucher struct {
+	Code            string
+	DiscountPercent float64
+	MaxDiscount     float64
+	MinPurchase     float64
+}
+
+func CalculateFinalPrice(items []CartItem, voucher *Voucher) (subtotal float64, discount float64, total float64, err error) {
+	// validationrules 1
+	if len(items) == 0 {
+		return 0, 0, 0, errors.New("Cart cannot be empty")
+	}
+
+	// validation rules 2 & 3
+	for _, item := range items {
+
+		if item.Quantity <= 0 || item.Price < 0 {
+			return 0, 0, 0, errors.New("invalid item price or quantity")
+		}
+
+		subtotal += item.Price * float64(item.Quantity)
+	}
+
+	// validation rules 4
+	if voucher == nil {
+		return subtotal, 0, subtotal, nil
+	}
+
+	// validation rules 5 sub 1: handle voucher applicability
+	if subtotal < voucher.MinPurchase {
+		return subtotal, 0, subtotal, nil
+	}
+
+	// validation rules 5 sub 2: calculate nominal discount
+	nominalDiscount := subtotal * (voucher.DiscountPercent / 100)
+
+	// validation rules 5 sub 3: apply max discount
+	if nominalDiscount > voucher.MaxDiscount {
+		discount = voucher.MaxDiscount
+	} else {
+		discount = nominalDiscount
+	}
+
+	// validation rules 5 sub 4: calculate total
+	total = subtotal - discount
+	return subtotal, discount, total, nil
+}
+
+// entry point
+// test case
+func main() {
+	items := []CartItem{
+		{ProductID: "P001", Name: "Gaming Mouse", Price: 250000.0, Quantity: 2},
+		{ProductID: "P002", Name: "Mechanical Keyboard", Price: 750000.0, Quantity: 1},
+	}
+
+	voucher := &Voucher{
+		Code:            "FLASHDEAL10",
+		DiscountPercent: 10.0,
+		MaxDiscount:     50000.0,
+		MinPurchase:     500000.0,
+	}
+
+	subtotal, discount, total, err := CalculateFinalPrice(items, voucher)
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+	} else {
+		fmt.Printf("Subtotal : Rp%.2f\n", subtotal)
+		fmt.Printf("Discount : Rp%.2f\n", discount)
+		fmt.Printf("Total    : Rp%.2f\n", total)
+	}
+}
 ```
